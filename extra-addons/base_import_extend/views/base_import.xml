@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--单据导入别名-->
+    <menuitem id="alias_import_root" name="Import Alias" sequence="10"/>
+    <record id="alias_import_mapping_tree" model="ir.ui.view">
+        <field name="name">alias_import_mapping_tree</field>
+        <field name="model">alias.importmapping</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="res_name"/>
+                <field name="name"/>
+                <field name="create_date" readonly="1"/>
+                <field name="create_uid" readonly="1" options="{'no_open': True}"/>
+                <field name="write_date" readonly="1"/>
+                <field name="write_uid" readonly="1" options="{'no_open': True}"/>
+            </tree>
+        </field>
+    </record>
+    <act_window id="action_alias_import_mapping"
+                name="Alias Import Mapping"
+                res_model="alias.importmapping"
+                view_mode="tree"
+    />
+    <menuitem id="menu_alias_importmapping"
+              name="Alias Import"
+              action="action_alias_import_mapping"
+              parent="alias_import_root"
+              sequence="10"
+    />
+
+    <!--单据导入-->
+    <menuitem id="file_import_root" name="File Alias" sequence="20"/>
+    <record id="file_import_form" model="ir.ui.view">
+        <field name="name">file_import_form</field>
+        <field name="model">file.import</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_process" string="Action Process" type="object" states="draft"/>
+                    <button name="action_confirm" string="Action Confirm" type="object" class="oe_highlight" states="process"/>
+                    <button name="action_cancel" string="Action Confirm" type="object" states="process"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <div>
+                    <p>步骤一：上传文件</p>
+                </div>
+                <group>
+                    <group>
+                        <field name="partner_id" options="{'no_open': True, 'no_create': True}"/>
+                    </group>
+                    <group>
+                        <field name="type"/>
+                    </group>
+                </group>
+                <field name="file" filename="datas_fname"/>
+                <field name="datas_fname" invisible="1"/>
+                <div>
+                    <p>步骤二：匹配导入列</p>
+                </div>
+                <field name="data_info" />
+                <button name="preview"
+                        string="Preview"
+                        type="object"
+                        class="oe_highlight"
+                        states="draft"
+                />
+                <field name="line_ids">
+                    <tree editable="bottom" limit="20" create="0" class="base-import">
+                        <field name="sequence"/>
+                        <field name="name"/>
+                        <field name="brand"/>
+                        <field name="datecode"/>
+                        <field name="quality"/>
+                        <field name="date_of_delivery"/>
+                        <field name="moq"/>
+                        <field name="coo"/>
+                        <field name="product_qty"/>
+                        <field name="currency_id"/>
+                        <field name="price_unit"/>
+                        <field name="description"/>
+                        <field name="product_code"/>
+                    </tree>
+                </field>
+            </form>
+        </field>
+    </record>
+    <act_window id="action_file_import"
+                name="File Import"
+                res_model="file.import"
+                view_mode="form"
+    />
+    <menuitem id="menu_file_import"
+              name="File Import"
+              action="action_file_import"
+              parent="file_import_root"
+              sequence="10"
+    />
+</odoo>

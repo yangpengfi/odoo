@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="name" model="alias.importmapping">
+            <field name="name">型号</field>
+            <field name="res_name">name</field>
+        </record>
+        <record id="brand" model="alias.importmapping">
+            <field name="name">厂牌</field>
+            <field name="res_name">brand</field>
+        </record>
+        <record id="datecode" model="alias.importmapping">
+            <field name="name">批次</field>
+            <field name="res_name">datecode</field>
+        </record>
+        <record id="quality" model="alias.importmapping">
+            <field name="name">品质</field>
+            <field name="res_name">quality</field>
+        </record>
+        <record id="date_of_delivery" model="alias.importmapping">
+            <field name="name">货期</field>
+            <field name="res_name">date_of_delivery</field>
+        </record>
+        <record id="moq" model="alias.importmapping">
+            <field name="name">MOQ</field>
+            <field name="res_name">moq</field>
+        </record>
+        <record id="coo" model="alias.importmapping">
+            <field name="name">原产地</field>
+            <field name="res_name">coo</field>
+        </record>
+        <record id="product_qty" model="alias.importmapping">
+            <field name="name">数量</field>
+            <field name="res_name">product_qty</field>
+        </record>
+        <record id="currency_id" model="alias.importmapping">
+            <field name="name">币种</field>
+            <field name="res_name">currency_id</field>
+        </record>
+        <record id="price_unit" model="alias.importmapping">
+            <field name="name">价格</field>
+            <field name="res_name">price_unit</field>
+        </record>
+        <record id="description" model="alias.importmapping">
+            <field name="name">描述</field>
+            <field name="res_name">description</field>
+        </record>
+        <record id="product_code" model="alias.importmapping">
+            <field name="name">产品代码</field>
+            <field name="res_name">product_code</field>
+        </record>
+    </data>
+</odoo>

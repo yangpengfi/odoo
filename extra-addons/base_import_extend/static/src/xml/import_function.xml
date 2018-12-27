@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates>
+    <t t-name="FieldMatch.option">
+        <t t-if="selectData">
+            <t t-foreach="selectData" t-as="item">
+                <option t-att-value="item"  class="temporary"><t t-esc="item"></t></option>
+            </t>
+        </t>
+    </t>
+    <t t-name="FieldMatch">
+        <div class="oe_form_field_match step2">
+            <t t-if="widget.mode === 'readonly'">
+                <span>系统已自动匹配栏目：<t t-esc="widget.value.match_header_count"></t></span>
+                <table class="table-condensed table-striped table-responsive" id="autoMatch">
+                    <tr>
+                        <th>已匹配栏目</th>
+                        <t t-if="widget.value">
+                            <th t-foreach="widget.value.match_header" t-as="item"><t t-esc="item_value[0]"></t></th>
+                        </t>
+                    </tr>
+                    <tr>
+                        <td>系统字段</td>
+                        <t t-if="widget.value">
+                            <td t-foreach="widget.value.match_header" t-as="item"><t t-esc="item_value[1]"></t></td>
+                        </t>
+                    </tr>
+                </table>
+                <span>未自动匹配栏目：<t t-esc="widget.value.not_match_header_count"></t></span>
+                <table class="table-condensed table-striped table-responsive" id="noAutoMatch">
+                    <tr>
+                        <th>已匹配栏目</th>
+                        <t t-if="widget.value">
+                            <th t-foreach="widget.value.not_match_header" t-as="item"><t t-esc="item_value[0]"></t></th>
+                        </t>
+                    </tr>
+                    <tr>
+                        <td>系统字段</td>
+                        <t t-if="widget.value">
+                            <td t-foreach="widget.value.not_match_header" t-as="item"><t t-esc="item_value[1]"></t></td>
+                        </t>
+                    </tr>
+                </table>
+            </t>
+            <t t-if="widget.mode === 'edit'">
+                <span>系统已自动匹配栏目：<t t-esc="widget.value.match_header_count"></t></span>
+                <table class="table-condensed table-striped table-responsive" id="autoMatch">
+                    <tr>
+                        <th>已匹配栏目</th>
+                        <t t-if="widget.value">
+                            <th t-foreach="widget.value.match_header" t-as="item"><t t-esc="item_value[0]"></t></th>
+                        </t>
+                    </tr>
+                    <tr>
+                        <td>系统字段</td>
+                        <t t-if="widget.value">
+                            <td t-foreach="widget.value.match_header" t-as="item">
+                                <select class="match_header headSelect" t-att="{'data-key':item_value[0]}">
+                                    <option t-att-value="item_value[1]" class="selected"><t   t-esc="item_value[1]"></t></option>
+                                </select>
+                            </td>
+                        </t>
+                    </tr>
+                </table>
+                <span>未自动匹配栏目：<t t-esc="widget.value.not_match_header_count"></t></span>
+                <table class="table-condensed table-striped table-responsive" id="noAutoMatch">
+                    <tr>
+                        <th>已匹配栏目</th>
+                        <t t-if="widget.value">
+                            <th t-foreach="widget.value.not_match_header" t-as="item"><t t-esc="item_value[0]"></t></th>
+                        </t>
+                    </tr>
+                    <tr>
+                        <td>系统字段</td>
+                        <t t-if="widget.value">
+                            <td t-foreach="widget.value.not_match_header" t-as="item">
+                                <select class="not_match_header headSelect" t-att="{'data-key':item_value[0]}">
+                                    <option t-att-value="item_value[1]" class="selected"><t   t-esc="item_value[1]"></t></option>
+                                </select>
+                            </td>
+                        </t>
+                    </tr>
+                </table>
+            </t>
+            <span class="span-font999">提示：如果文件栏目未匹配到系统字段则并入描述栏</span>
+            <div class="tableHead">
+                <span>预览</span>
+                <input type="checkbox" id="errorData"/>
+                <label for="error">仅显示错误格式数据</label>
+                <input type="checkbox" id="mergeErrorData"/>
+                <label for="mergeErrorData">将错误格式数据并入描述栏</label>
+            </div>
+
+        </div>
+    </t>
+</templates>
+
